@@ -1,6 +1,6 @@
 name: 01-context
 on: push
-env_var: ${{ vars.MY_ENV }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
