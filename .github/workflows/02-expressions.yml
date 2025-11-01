@@ -1,7 +1,6 @@
 name: using expressions
 run-name: 02 - using expressions
 
-
 on:
   workflow_dispatch:
     inputs:
@@ -12,9 +11,10 @@ on:
 jobs:
   echo:
     runs-on: ubuntu-latest
+
     steps:
       - name: '[debug] print start-up data'
-        if: inputs.debug:
+        if: ${{ inputs.debug }}
         run: |
           echo "Triggered by: ${{ github.event_name }}"
           echo "Branch: ${{ github.ref }}"
@@ -22,8 +22,8 @@ jobs:
           echo "Runner OS: ${{ runner.os }}"
 
       - name: '[debug] Print when triggered from main'
-        if: inputs.debug && github.ref == 'refs/heads/main'
+        if: ${{ inputs.debug && github.ref == 'refs/heads/main' }}
         run: echo "I was triggered from main"
 
       - name: Greeting
-        run: echo "Hello World"              
+        run: echo "Hello World"
